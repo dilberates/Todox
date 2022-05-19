@@ -8,32 +8,12 @@
     tools:context=".registerActivity">
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/inputEmailS"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_secrutiy"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Şifre"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputEmail"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/inputEmail"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
-
-    <EditText
-        android:id="@+id/inputEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="10dp"
@@ -46,10 +26,31 @@
         android:paddingBottom="10dp"
         android:textColorHint="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPasswordL"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPasswordL"
-        app:layout_constraintTop_toBottomOf="@+id/inputPasswordL" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <EditText
+        android:id="@+id/inputPasswordS"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/input_bg"
+        android:drawableLeft="@drawable/ic_secrutiy"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Şifre"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/inputEmailS"
+        app:layout_constraintStart_toStartOf="@+id/inputEmailS"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailS" />
 
     <TextView
         android:id="@+id/alreadyHaveAccount"
@@ -69,16 +70,16 @@
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/btn_bg"
         android:backgroundTint="#FFFFFF"
         android:text="KAYIT"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword2" />
+        app:layout_constraintEnd_toEndOf="@+id/inputPasswordS"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputPasswordS"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordS" />
 
     <TextView
         android:id="@+id/logo"
@@ -91,55 +92,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
-
-    <EditText
-        android:id="@+id/inputPasswordL"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Kullanıcı Adı"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColorHint="#EFEFEF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <EditText
-        android:id="@+id/inputPassword2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_secrutiy"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Şifre Tekrar"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputPassword"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintVertical_bias="0.288" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

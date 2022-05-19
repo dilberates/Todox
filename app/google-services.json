@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648016901901",
+    "project_id": "todoxapptutorial",
+    "storage_bucket": "todoxapptutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648016901901:android:34424c2cfe6879e7c9a244",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648016901901-qp75an47id1p7d96do7bjerbil0bgh5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABOeRU8_XPTR8Ehk1zib_VXedn4xlOWcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648016901901-qp75an47id1p7d96do7bjerbil0bgh5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

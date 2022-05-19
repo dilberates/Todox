@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/inputEmail"
+        android:id="@+id/inputEmailL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -65,10 +65,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_person"
+        android:drawableLeft="@drawable/ic_secrutiy"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Kullanıcı Adı"
+        android:hint="Şifre"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -76,10 +76,10 @@
         android:paddingBottom="10dp"
         android:textColorHint="#EFEFEF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputEmail"
+        app:layout_constraintEnd_toEndOf="@+id/inputEmailL"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputEmail"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+        app:layout_constraintStart_toStartOf="@+id/inputEmailL"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailL" />
 
     <TextView
         android:id="@+id/logo"
