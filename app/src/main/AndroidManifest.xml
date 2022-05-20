@@ -9,7 +9,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".forgotPasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Şifre Yenileme"/>
         <activity
             android:name=".weekActivity"
             android:exported="false" />
@@ -21,7 +22,8 @@
             android:exported="false" />
         <activity
             android:name=".toDoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="TODO"/>
 
         <meta-data
             android:name="com.google.android.actions"
