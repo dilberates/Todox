@@ -55,8 +55,14 @@ private Button reset_btn;
                 {
                     chronometer.setBase(SystemClock.elapsedRealtime());
                     PauseOffSet = 0;
-                    chronometer.start();
-                    isPlaying = true;
+                    chronometer.stop();
+                    isPlaying = false;
+                }
+                else {
+                    chronometer.setBase(SystemClock.elapsedRealtime());
+                    PauseOffSet = 0;
+                    chronometer.stop();
+                    isPlaying = false;
                 }
             }
         });
