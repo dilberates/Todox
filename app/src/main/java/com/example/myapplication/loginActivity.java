@@ -21,16 +21,15 @@ public class loginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
+    EditText minputEmaill,minputPasswordL;
+    TextView mforgotPassword,mtextViewSignUp;
+    Button mbtnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText minputEmaill=findViewById(R.id.inputEmailL);
-        EditText minputPasswordL=findViewById(R.id.inputPasswordL);
-        TextView mforgotPassword=findViewById(R.id.forgotPassword);
-        TextView mtextViewSignUp=findViewById(R.id.textViewSignUp);
-        Button mbtnLogin=findViewById(R.id.btnLogin);
+        initCompenents();
 
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
@@ -87,6 +86,15 @@ public class loginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initCompenents() {
+        minputEmaill=findViewById(R.id.inputEmailL);
+        minputPasswordL=findViewById(R.id.inputPasswordL);
+        mforgotPassword=findViewById(R.id.forgotPassword);
+        mtextViewSignUp=findViewById(R.id.textViewSignUp);
+        mbtnLogin=findViewById(R.id.btnLogin);
+    }
+
     private void checkmailverfication()
     {
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();

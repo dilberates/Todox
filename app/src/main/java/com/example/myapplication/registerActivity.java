@@ -20,14 +20,15 @@ import com.google.firebase.auth.FirebaseUser;
 public class registerActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
+    EditText minputEmails,minputPasswords;
+    TextView malreadyHaveAccount;
+    Button mbtnRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        EditText minputEmails=findViewById(R.id.inputEmailS);
-        EditText minputPasswords=findViewById(R.id.inputPasswordS);
-        TextView malreadyHaveAccount=findViewById(R.id.alreadyHaveAccount);
-        Button mbtnRegister=findViewById(R.id.btnRegister);
+
+        initComponent();
 
         firebaseAuth=FirebaseAuth.getInstance();
         mbtnRegister.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +68,14 @@ public class registerActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initComponent() {
+        minputEmails=findViewById(R.id.inputEmailS);
+        minputPasswords=findViewById(R.id.inputPasswordS);
+        malreadyHaveAccount=findViewById(R.id.alreadyHaveAccount);
+        mbtnRegister=findViewById(R.id.btnRegister);
+    }
+
     private void sendEmailVerification()
     {
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();

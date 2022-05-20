@@ -10,15 +10,13 @@ import android.widget.ImageView;
 
 public class mainPage extends AppCompatActivity {
 
+    ImageView toDo,notes,pomodoro,week;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        ImageView toDo=findViewById(R.id.toDoBtn);
-        ImageView notes=findViewById(R.id.notesBtn);
-        ImageView pomodoro=findViewById(R.id.pomodoroBtn);
-        ImageView week=findViewById(R.id.weekBtn);
+        initCompanenet();
 
         week.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,5 +46,12 @@ public class mainPage extends AppCompatActivity {
                 startActivity(new Intent(mainPage.this,toDoActivity.class));
             }
         });
+    }
+
+    private void initCompanenet() {
+        toDo=findViewById(R.id.toDoBtn);
+        notes=findViewById(R.id.notesBtn);
+        pomodoro=findViewById(R.id.pomodoroBtn);
+        week=findViewById(R.id.weekBtn);
     }
 }

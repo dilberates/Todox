@@ -18,15 +18,16 @@ import com.google.firebase.auth.FirebaseAuth;
 public class forgotPasswordActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
+    EditText minputEmail2;
+    Button mbtnBaglanti;
+    TextView mbackLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        EditText minputEmail2 = findViewById(R.id.inputEmail2);
-        Button mbtnBaglanti = findViewById(R.id.btnBaglanti);
-        TextView mbackLogin = findViewById(R.id.backLogin);
 
+        initCompanenet();
         firebaseAuth = FirebaseAuth.getInstance();
 
         mbackLogin.setOnClickListener(new View.OnClickListener() {
@@ -62,5 +63,11 @@ public class forgotPasswordActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initCompanenet() {
+        minputEmail2 = findViewById(R.id.inputEmail2);
+        mbtnBaglanti = findViewById(R.id.btnBaglanti);
+        mbackLogin = findViewById(R.id.backLogin);
     }
 }

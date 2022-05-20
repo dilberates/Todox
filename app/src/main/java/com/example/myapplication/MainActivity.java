@@ -9,12 +9,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button logBtn,signBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button logBtn=findViewById(R.id.log);
-        Button signBtn=findViewById(R.id.sign);
+
+        initCompenents();
+
         signBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,5 +31,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,loginActivity.class));
             }
         });
+    }
+
+    private void initCompenents() {
+        logBtn=findViewById(R.id.log);
+        signBtn=findViewById(R.id.sign);
     }
 }
