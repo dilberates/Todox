@@ -172,7 +172,7 @@ public class notesActivitiy extends AppCompatActivity {
              mnote=itemView.findViewById(R.id.note);
         }
     }
-    
+
 
     @Override
     protected void onStart() {
