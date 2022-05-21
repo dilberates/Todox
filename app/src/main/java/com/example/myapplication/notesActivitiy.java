@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class NotesActivitiy extends AppCompatActivity {
+public class notesActivitiy extends AppCompatActivity {
 
     FloatingActionButton mcreatenotesfab;
     private FirebaseAuth firebaseAuth;

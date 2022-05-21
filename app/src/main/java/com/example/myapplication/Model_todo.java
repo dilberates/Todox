@@ -2,15 +2,14 @@ package com.example.myapplication;
 
 
 public class Model_todo {
-    private String gorev,aciklama,id,date;
+    private String gorev,aciklama,date;
     public Model_todo(){
 
     }
 
-    public Model_todo(String gorev, String aciklama, String id, String date) {
+    public Model_todo(String gorev, String aciklama, String date) {
         this.gorev = gorev;
         this.aciklama = aciklama;
-        this.id = id;
         this.date = date;
     }
 
@@ -28,14 +27,6 @@ public class Model_todo {
 
     public void setAciklama(String aciklama) {
         this.aciklama = aciklama;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDate() {

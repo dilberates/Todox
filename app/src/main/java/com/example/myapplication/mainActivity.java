@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class mainActivity extends AppCompatActivity {
 
     Button logBtn,signBtn;
     @Override
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         signBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                startActivity(new Intent(mainActivity.this, registerActivity.class));
             }
         });
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         logBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(mainActivity.this, loginActivity.class));
             }
         });
     }

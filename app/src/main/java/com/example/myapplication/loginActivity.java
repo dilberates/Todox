@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         if(firebaseUser!=null)
         {
             finish();
-            startActivity(new Intent(LoginActivity.this, MainPage.class));
+            startActivity(new Intent(loginActivity.this, mainPage.class));
         }
 
         mbtnLogin.setOnClickListener(new View.OnClickListener() {
@@ -75,14 +75,14 @@ public class LoginActivity extends AppCompatActivity {
         mtextViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                startActivity(new Intent(loginActivity.this, registerActivity.class));
             }
         });
 
         mforgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, forgotPasswordActivity.class));
+                startActivity(new Intent(loginActivity.this, forgotPasswordActivity.class));
             }
         });
     }
@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             Toast.makeText(getApplicationContext(),"Giriş yapıldı",Toast.LENGTH_SHORT).show();
             finish();
-            startActivity(new Intent(LoginActivity.this, MainPage.class));
+            startActivity(new Intent(loginActivity.this, mainPage.class));
         }
         else
         {

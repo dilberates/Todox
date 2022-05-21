@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bb"
     android:textAlignment="textStart"
-    tools:context=".LoginActivity">
+    tools:context=".loginActivity">
 
 
     <EditText
