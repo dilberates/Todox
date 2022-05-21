@@ -23,6 +23,20 @@
         <entry key="..\:/Todox/app/src/main/res/layout/activity_week.xml" value="0.20863616930312098" />
         <entry key="..\:/Todox/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2595" />
         <entry key="..\:/Todox/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2595" />
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_main_page.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_register.xml" value="0.259375" />
+=======
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_create_note.xml" value="0.259375" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/layout/activity_notes_activitiy.xml" value="0.18571428571428572" />
+        <entry key="..\:/Users/USER/Documents/GitHub/Todox/app/src/main/res/menu/menu.xml" value="0.259375" />
+>>>>>>> Stashed changes
+>>>>>>> main
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/btn_bg.xml" value="0.22" />
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_facebook.xml" value="0.22" />
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_google.xml" value="0.22" />
@@ -31,6 +45,7 @@
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dneme/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.2" />
+<<<<<<< HEAD
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/drawable/btn_bg.xml" value="0.2595" />
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/drawable/ic_email.xml" value="0.2595" />
@@ -43,6 +58,15 @@
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/layout/activity_to_do.xml" value="0.1" />
         <entry key="..\:/Users/dneme/OneDrive/Belgeler/GitHub/Todox/app/src/main/res/layout/input_file_todo.xml" value="0.2" />
+=======
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/drawable/btn_bg.xml" value="0.114" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/drawable/btn_bg2.xml" value="0.114" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/drawable/start_pause_button_bg.xml" value="0.114" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_pomodoro.xml" value="0.4" />
+>>>>>>> main
       </map>
     </option>
   </component>

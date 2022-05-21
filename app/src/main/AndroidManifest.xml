@@ -8,9 +8,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".notedetails"
+            android:exported="false" />
+        <activity
+            android:name=".editnoteactivity"
+            android:exported="false" />
+        <activity
             android:name=".forgotPasswordActivity"
             android:exported="false"
             android:label="Şifre Yenileme"/>
+        <activity
+            android:name=".createNote"
+            android:exported="false" />
         <activity
             android:name=".weekActivity"
             android:exported="false" />
