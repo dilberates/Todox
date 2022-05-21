@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:background="#1A5E3F"
+        android:padding="10dp"
+        android:text="Yeni Görev Ekle"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="20sp"
+
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Görev"
+                android:background="@color/green"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                ></TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+            <EditText
+                android:id="@+id/gorev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Görev..."
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                ></EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Açıklama"
+                android:background="@color/green"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+
+            <EditText
+                android:id="@+id/aciklama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Açıklama..."
+                android:textStyle="bold"></EditText>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/iptalBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="İPTAL"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                ></Button>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <Button
+                android:id="@+id/ekleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KAYDET"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                ></Button>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

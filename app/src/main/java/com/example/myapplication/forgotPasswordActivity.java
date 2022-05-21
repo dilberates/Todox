@@ -33,7 +33,7 @@ public class forgotPasswordActivity extends AppCompatActivity {
         mbackLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(forgotPasswordActivity.this, loginActivity.class);
+                Intent intent = new Intent(forgotPasswordActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class forgotPasswordActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getApplicationContext(), "Kurtarma e-poastası gönderildi.", Toast.LENGTH_SHORT).show();
                                 finish();
-                                startActivity(new Intent(forgotPasswordActivity.this, loginActivity.class));
+                                startActivity(new Intent(forgotPasswordActivity.this, LoginActivity.class));
                             } else {
                                 Toast.makeText(getApplicationContext(), "E-posta yanlış veya böyle bir hesap yok!", Toast.LENGTH_SHORT).show();
                             }

@@ -18,10 +18,10 @@
             android:name=".pomodoroActivity"
             android:exported="false" />
         <activity
-            android:name=".notesActivitiy"
+            android:name=".NotesActivitiy"
             android:exported="false" />
         <activity
-            android:name=".toDoActivity"
+            android:name=".ToDoActivity"
             android:exported="false"
             android:label="TODO"/>
 
@@ -30,7 +30,7 @@
             android:resource="@xml/btn_bg_white" />
 
         <activity
-            android:name=".mainPage"
+            android:name=".MainPage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -41,8 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerActivity" />
-        <activity android:name=".loginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

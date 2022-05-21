@@ -5,10 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-public class mainPage extends AppCompatActivity {
+public class MainPage extends AppCompatActivity {
 
     ImageView toDo,notes,pomodoro,week;
     @Override
@@ -21,7 +20,7 @@ public class mainPage extends AppCompatActivity {
         week.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainPage.this,weekActivity.class));
+                startActivity(new Intent(MainPage.this,weekActivity.class));
             }
         });
 
@@ -29,21 +28,21 @@ public class mainPage extends AppCompatActivity {
         pomodoro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainPage.this,pomodoroActivity.class));
+                startActivity(new Intent(MainPage.this,pomodoroActivity.class));
             }
         });
 
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainPage.this,notesActivitiy.class));
+                startActivity(new Intent(MainPage.this, NotesActivitiy.class));
             }
         });
 
         toDo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mainPage.this,toDoActivity.class));
+                startActivity(new Intent(MainPage.this, ToDoActivity.class));
             }
         });
     }

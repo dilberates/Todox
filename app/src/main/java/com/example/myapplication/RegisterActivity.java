@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class registerActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
 
     EditText minputEmails,minputPasswords;
@@ -64,7 +64,7 @@ public class registerActivity extends AppCompatActivity {
         malreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(registerActivity.this,loginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
     }
@@ -87,7 +87,7 @@ public class registerActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Doğrulama e-postası gönderildi. Doğrulayın ve tekrar giriş yapın.",Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
                     finish();
-                    startActivity(new Intent(registerActivity.this,loginActivity.class));
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 }
             });
         }
