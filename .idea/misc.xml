@@ -40,7 +40,9 @@
         <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/drawable/btn_bg2.xml" value="0.114" />
         <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/drawable/start_pause_button_bg.xml" value="0.114" />
         <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_pomodoro.xml" value="0.176" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/silan/Documents/GitHub/Todox/app/src/main/res/layout/activity_pomodoro.xml" value="0.4" />
       </map>
     </option>
   </component>
