@@ -27,28 +27,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Görev"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/green"
-                android:textStyle="bold"
-                android:layout_margin="10dp"
-                ></TextView>
+                android:text="Görev"
+                android:textStyle="bold"></TextView>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
+
             <EditText
                 android:id="@+id/gorev"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:hint="Görev..."
-                android:textStyle="bold"
-                android:layout_margin="10dp"
-                ></EditText>
+                android:textStyle="bold"></EditText>
         </RelativeLayout>
     </LinearLayout>
 

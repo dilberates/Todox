@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -48,6 +49,7 @@ import com.google.firebase.firestore.Query;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.transform.sax.SAXResult;
@@ -80,8 +82,7 @@ public class ToDoActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(linearLayoutManager);
+
 
         loader = new ProgressDialog(this);
 
@@ -98,7 +99,7 @@ public class ToDoActivity extends AppCompatActivity {
 
         });
 
-        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myTodo").orderBy("tarih", Query.Direction.ASCENDING);
+        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myTodo").orderBy("tarih",Query.Direction.ASCENDING);;
         FirestoreRecyclerOptions<Model_todo> allusertodos = new FirestoreRecyclerOptions.Builder<Model_todo>().setQuery(query, Model_todo.class).build();
         todoAdapter=new FirestoreRecyclerAdapter<Model_todo, TodoViewHolder>(allusertodos) {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -111,7 +112,7 @@ public class ToDoActivity extends AppCompatActivity {
 
                 String docId=todoAdapter.getSnapshots().getSnapshot(i).getId();
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                /*holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent=new Intent(v.getContext(),notedetails.class);
@@ -122,9 +123,9 @@ public class ToDoActivity extends AppCompatActivity {
                         v.getContext().startActivity(intent);
 
                     }
-                });
+                });*/
 
-                popupbutton.setOnClickListener(new View.OnClickListener() {
+               /* popupbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         PopupMenu popupMenu=new PopupMenu(v.getContext(),v);
@@ -140,9 +141,9 @@ public class ToDoActivity extends AppCompatActivity {
                                 v.getContext().startActivity(intent);
                                 return false;
                             }
-                        });
+                        });*/
 
-                        popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                       /* popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem menuItem) {
                                 DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(docId);
@@ -165,19 +166,36 @@ public class ToDoActivity extends AppCompatActivity {
 
                         popupMenu.show();
                     }
-                });
+                });*/
 
 
             }
 
             @NonNull
             @Override
-            public notesActivitiy.NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_layout,parent,false);
-                return new notesActivitiy.NoteViewHolder(view);
+            public TodoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layout,parent,false);
+                return new TodoViewHolder(view);
             }
         };
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(todoAdapter);
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        todoAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(todoAdapter!=null)
+        {
+            todoAdapter.stopListening();
+        }
     }
 
     private void addTask () {
@@ -245,14 +263,14 @@ public class ToDoActivity extends AppCompatActivity {
         private TextView gorev;
         private TextView aciklama;
         private TextView tarih;
-        LinearLayout todo;
+        LinearLayout mtodo;
 
         public TodoViewHolder(@NonNull View itemView) {
             super(itemView);
-            gorev = findViewById(R.id.gorevTv);
-            aciklama = findViewById(R.id.aciklamaTv);
-            tarih = findViewById(R.id.dateTv);
-            todo = findViewById(R.id.todo);
+            gorev = itemView.findViewById(R.id.gorevTv);
+            aciklama = itemView.findViewById(R.id.aciklamaTv);
+            tarih = itemView.findViewById(R.id.dateTv);
+            mtodo = itemView.findViewById(R.id.todo);
         }
     }
 
