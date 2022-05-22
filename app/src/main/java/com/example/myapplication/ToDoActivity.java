@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,18 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.ColorSpace;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +43,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -50,7 +61,9 @@ public class ToDoActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
-    DatabaseReference reference;
+
+    FirestoreRecyclerAdapter<Model_todo, TodoViewHolder> todoAdapter;
+
 
     private ProgressDialog loader;
 
@@ -60,22 +73,21 @@ public class ToDoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_to_do);
         initCompenents();
 
-        Toolbar toolbar=findViewById(R.id.homeToolBar);
+        Toolbar toolbar = findViewById(R.id.homeToolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        loader=new ProgressDialog(this);
+        loader = new ProgressDialog(this);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        reference=FirebaseDatabase.getInstance().getReference().child("myTodo");
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -86,10 +98,89 @@ public class ToDoActivity extends AppCompatActivity {
 
         });
 
+        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myTodo").orderBy("tarih", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<Model_todo> allusertodos = new FirestoreRecyclerOptions.Builder<Model_todo>().setQuery(query, Model_todo.class).build();
+        todoAdapter=new FirestoreRecyclerAdapter<Model_todo, TodoViewHolder>(allusertodos) {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            protected void onBindViewHolder(@NonNull TodoViewHolder holder, int i, @NonNull Model_todo model) {
+
+                holder.gorev.setText(model.getGorev());
+                holder.aciklama.setText(model.getAciklama());
+                holder.tarih.setText(model.getDate());
+
+                String docId=todoAdapter.getSnapshots().getSnapshot(i).getId();
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(v.getContext(),notedetails.class);
+                        intent.putExtra("title", firebasemodel.getTitle());
+                        intent.putExtra("content", firebasemodel.getContent());
+                        intent.putExtra("noteId", docId);
+
+                        v.getContext().startActivity(intent);
+
+                    }
+                });
+
+                popupbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PopupMenu popupMenu=new PopupMenu(v.getContext(),v);
+                        popupMenu.setGravity(Gravity.END);
+                        popupMenu.getMenu().add("Düzenle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+
+                                Intent intent=new Intent(v.getContext(),editnoteactivity.class);
+                                intent.putExtra("title", firebasemodel.getTitle());
+                                intent.putExtra("content", firebasemodel.getContent());
+                                intent.putExtra("noteId", docId);
+                                v.getContext().startActivity(intent);
+                                return false;
+                            }
+                        });
+
+                        popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(docId);
+                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(v.getContext(),"Not silindi",Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(v.getContext(),"Not silinemedi",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                                return false;
+                            }
+                        });
+
+                        popupMenu.show();
+                    }
+                });
+
+
+            }
+
+            @NonNull
+            @Override
+            public notesActivitiy.NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_layout,parent,false);
+                return new notesActivitiy.NoteViewHolder(view);
+            }
+        };
+
     }
 
-
-    private void addTask() {
+    private void addTask () {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = LayoutInflater.from(this);
 
@@ -115,7 +206,7 @@ public class ToDoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mgorev = gorevtxt.getText().toString().trim();
                 String maciklama = aciklamatxt.getText().toString().trim();
-                String date =DateFormat.getDateInstance().format(new Date());
+                String date = DateFormat.getDateInstance().format(new Date());
 
                 if (mgorev.isEmpty() || maciklama.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Lütfen her iki alanı da doldurunuz!", Toast.LENGTH_SHORT).show();
@@ -127,7 +218,7 @@ public class ToDoActivity extends AppCompatActivity {
                     Map<String, Object> note = new HashMap<>();
                     note.put("gorev", mgorev);
                     note.put("aciklama", maciklama);
-                    note.put("tarih",date);
+                    note.put("tarih", date);
 
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -149,57 +240,26 @@ public class ToDoActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<Model_todo> options = new FirebaseRecyclerOptions.Builder<Model_todo>()
-                .setQuery(reference, Model_todo.class).build();
+    public class TodoViewHolder extends RecyclerView.ViewHolder {
 
-        FirebaseRecyclerAdapter<Model_todo, MyView> adapter = new FirebaseRecyclerAdapter<Model_todo, MyView>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull MyView holder, int position, @NonNull Model_todo model) {
-            holder.setDate(model.getDate());
-            holder.setTask(model.getGorev());
-            holder.setDescription(model.getAciklama());
-            }
+        private TextView gorev;
+        private TextView aciklama;
+        private TextView tarih;
+        LinearLayout todo;
 
-            @NonNull
-            @Override
-            public MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.retrieved_layout, parent, false);
-                return new MyView(view);
-            }
-    };
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-}
-    public static class MyView extends RecyclerView.ViewHolder{
-        View mView;
-
-        public MyView(@NonNull View itemView) {
+        public TodoViewHolder(@NonNull View itemView) {
             super(itemView);
-            mView=itemView;
-        }
-        public void setTask(String task){
-            TextView taskTextView= (TextView) mView.findViewById(R.id.gorevTv);
-            taskTextView.setText(task);
-        }
-        public void setDate(String date){
-            TextView taskTextView= (TextView) mView.findViewById(R.id.dateTv);
-            taskTextView.setText(date);
-        }
-        public void setDescription(String description){
-            TextView taskTextView= (TextView) mView.findViewById(R.id.aciklamaTv);
-            taskTextView.setText(description);
+            gorev = findViewById(R.id.gorevTv);
+            aciklama = findViewById(R.id.aciklamaTv);
+            tarih = findViewById(R.id.dateTv);
+            todo = findViewById(R.id.todo);
         }
     }
 
+    private void initCompenents () {
+            toolbar = findViewById(R.id.homeToolBar);
+            recyclerView = findViewById(R.id.recyclerView);
+            floatingActionButton = findViewById(R.id.flo);
+        }
+}
 
-                private void initCompenents () {
-                    toolbar = findViewById(R.id.homeToolBar);
-                    recyclerView = findViewById(R.id.recyclerView);
-                    floatingActionButton = findViewById(R.id.flo);
-
-
-                }
-            }
