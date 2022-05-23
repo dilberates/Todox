@@ -56,9 +56,9 @@ import javax.xml.transform.sax.SAXResult;
 
 public class ToDoActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private RecyclerView recyclerView;
-    private FloatingActionButton floatingActionButton;
+    private Toolbar toolbar=null;
+    private RecyclerView recyclerView=null;
+    private FloatingActionButton floatingActionButton=null;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -106,42 +106,44 @@ public class ToDoActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull TodoViewHolder holder, int i, @NonNull Model_todo model) {
 
-                holder.gorev.setText(model.getGorev());
-                holder.aciklama.setText(model.getAciklama());
                 holder.tarih.setText(model.getDate());
+                holder.gorev.setText(model.getGorev());
+                holder.aciklama.setText(model.getAciklama());//görüntüleme
+
+                ImageView popupbutton=holder.itemView.findViewById(R.id.menupopbutton);
 
                 String docId=todoAdapter.getSnapshots().getSnapshot(i).getId();
-
-                /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(v.getContext(),notedetails.class);
-                        intent.putExtra("title", firebasemodel.getTitle());
-                        intent.putExtra("content", firebasemodel.getContent());
-                        intent.putExtra("noteId", docId);
-
+                        Intent intent=new Intent(v.getContext(),todos_details.class);
+                        intent.putExtra("gorev", model.getGorev());
+                        intent.putExtra("tarih", model.getDate());
+                        intent.putExtra("aciklama",model.getAciklama());
+                        intent.putExtra("todoId",docId);
                         v.getContext().startActivity(intent);
-
                     }
-                });*/
+                });
 
-               /* popupbutton.setOnClickListener(new View.OnClickListener() {
+              /* popupbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PopupMenu popupMenu=new PopupMenu(v.getContext(),v);
+                        PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
                         popupMenu.setGravity(Gravity.END);
                         popupMenu.getMenu().add("Düzenle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
 
-                                Intent intent=new Intent(v.getContext(),editnoteactivity.class);
+                                Intent intent = new Intent(v.getContext(), editnoteactivity.class);
                                 intent.putExtra("title", firebasemodel.getTitle());
                                 intent.putExtra("content", firebasemodel.getContent());
                                 intent.putExtra("noteId", docId);
                                 v.getContext().startActivity(intent);
                                 return false;
                             }
-                        });*/
+                        });
+                    }});*/
+
 
                        /* popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
@@ -178,6 +180,7 @@ public class ToDoActivity extends AppCompatActivity {
                 return new TodoViewHolder(view);
             }
         };
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(todoAdapter);
@@ -224,7 +227,7 @@ public class ToDoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mgorev = gorevtxt.getText().toString().trim();
                 String maciklama = aciklamatxt.getText().toString().trim();
-                String date = DateFormat.getDateInstance().format(new Date());
+                String date = DateFormat.getDateInstance().format(new Date()).trim();
 
                 if (mgorev.isEmpty() || maciklama.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Lütfen her iki alanı da doldurunuz!", Toast.LENGTH_SHORT).show();
@@ -279,5 +282,7 @@ public class ToDoActivity extends AppCompatActivity {
             recyclerView = findViewById(R.id.recyclerView);
             floatingActionButton = findViewById(R.id.flo);
         }
-}
+
+        }
+
 

@@ -8,6 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".todos_details"
+            android:exported="false" />
+        <activity
             android:name=".notedetails"
             android:exported="false" />
         <activity
@@ -16,7 +19,7 @@
         <activity
             android:name=".forgotPasswordActivity"
             android:exported="false"
-            android:label="Şifre Yenileme"/>
+            android:label="Şifre Yenileme" />
         <activity
             android:name=".createNote"
             android:exported="false" />
@@ -32,7 +35,7 @@
         <activity
             android:name=".ToDoActivity"
             android:exported="false"
-            android:label="TODO"/>
+            android:label="TODO" />
 
         <meta-data
             android:name="com.google.android.actions"
