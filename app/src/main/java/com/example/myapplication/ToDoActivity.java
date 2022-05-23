@@ -125,52 +125,49 @@ public class ToDoActivity extends AppCompatActivity {
                     }
                 });
 
-              /* popupbutton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
-                        popupMenu.setGravity(Gravity.END);
-                        popupMenu.getMenu().add("Düzenle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
+               popupbutton.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
+                       popupMenu.setGravity(Gravity.END);
+                       popupMenu.getMenu().add("Düzenle").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                           @Override
+                           public boolean onMenuItemClick(MenuItem item) {
 
-                                Intent intent = new Intent(v.getContext(), editnoteactivity.class);
-                                intent.putExtra("title", firebasemodel.getTitle());
-                                intent.putExtra("content", firebasemodel.getContent());
-                                intent.putExtra("noteId", docId);
-                                v.getContext().startActivity(intent);
-                                return false;
-                            }
-                        });
-                    }});*/
+                               Intent intent = new Intent(v.getContext(), todos_details.class);
+                               intent.putExtra("gorev", model.getGorev());
+                               intent.putExtra("tarih", model.getDate());
+                               intent.putExtra("aciklama", model.getAciklama());
+                               intent.putExtra("todoId", docId);
+                               v.getContext().startActivity(intent);
+                               return false;
+                           }
+                       });
 
-
-                       /* popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem menuItem) {
-                                DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(docId);
-                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(v.getContext(),"Not silindi",Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(v.getContext(),"Not silinemedi",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-
-                                return false;
-                            }
-                        });
-
-                        popupMenu.show();
-                    }
-                });*/
+                       popupMenu.getMenu().add("Sil").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                           @Override
+                           public boolean onMenuItemClick(MenuItem menuItem) {
+                               DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myTodo").document(docId);
+                               documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                   @Override
+                                   public void onSuccess(Void aVoid) {
+                                       Toast.makeText(v.getContext(), "Todo silindi", Toast.LENGTH_SHORT).show();
+                                   }
+                               }).addOnFailureListener(new OnFailureListener() {
+                                   @Override
+                                   public void onFailure(@NonNull Exception e) {
+                                       Toast.makeText(v.getContext(), "Todo silinemedi", Toast.LENGTH_SHORT).show();
+                                   }
+                               });
 
 
+                               return false;
+                           }
+                       });
+
+                       popupMenu.show();
+                   }
+               });
             }
 
             @NonNull
@@ -180,6 +177,8 @@ public class ToDoActivity extends AppCompatActivity {
                 return new TodoViewHolder(view);
             }
         };
+
+
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -279,7 +278,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     private void initCompenents () {
             toolbar = findViewById(R.id.homeToolBar);
-            recyclerView = findViewById(R.id.recyclerView);
+            recyclerView = findViewById(R.id.recyclerView2);
             floatingActionButton = findViewById(R.id.flo);
         }
 

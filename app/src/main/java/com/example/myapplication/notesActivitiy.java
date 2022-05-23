@@ -141,8 +141,6 @@ public class notesActivitiy extends AppCompatActivity {
                         popupMenu.show();
                     }
                 });
-
-
             }
 
             @NonNull
